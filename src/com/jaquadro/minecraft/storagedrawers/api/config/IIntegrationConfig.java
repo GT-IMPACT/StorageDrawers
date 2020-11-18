@@ -4,5 +4,5 @@ public interface IIntegrationConfig
 {
     boolean isRefinedRelocationEnabled ();
     boolean isChiselEnabled ();
-    boolean isGTNHEnabled ();
+    boolean isIMPACTEnabled ();
 }

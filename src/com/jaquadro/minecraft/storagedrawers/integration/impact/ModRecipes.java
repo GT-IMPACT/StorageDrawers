@@ -1,4 +1,4 @@
-package com.jaquadro.minecraft.storagedrawers.integration.gtnh;
+package com.jaquadro.minecraft.storagedrawers.integration.impact;
 
 import com.google.common.collect.ImmutableList;
 import com.jaquadro.minecraft.storagedrawers.core.ModBlocks;
@@ -6,6 +6,7 @@ import com.jaquadro.minecraft.storagedrawers.core.ModItems;
 import com.jaquadro.minecraft.storagedrawers.item.ItemDrawers;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.UniqueIdentifier;
+import gregtech.api.enums.ItemList;
 import gregtech.api.util.GT_Utility;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -30,18 +31,19 @@ public class ModRecipes {
     private static final String ORE_craftingToolScrewdriver = "craftingToolScrewdriver";
     private static final String ORE_drawerBasic = "drawerBasic";
     private static final String ORE_fenceWood = "fenceWood";
+    private static final String ORE_itemCasingAluminium = "itemCasingAluminium";
     private static final String ORE_plateAluminium = "plateAluminium";
     private static final String ORE_plateDiamond = "plateDiamond";
-    private static final String ORE_plateDenseObsidian = "plateDenseObsidian";
-    private static final String ORE_plateEnderEye = "plateEnderEye";
     private static final String ORE_plateEmerald = "plateEmerald";
     private static final String ORE_plateGold = "plateGold";
     private static final String ORE_plateIron = "plateIron";
     private static final String ORE_plateObsidian = "plateObsidian";
     private static final String ORE_plateRedstone = "plateRedstone";
     private static final String ORE_plateStainlessSteel = "plateStainlessSteel";
+    private static final String ORE_plateBirmabright = "plateBirmabright";
     private static final String ORE_plateSteel = "plateSteel";
     private static final String ORE_plateTitanium = "plateTitanium";
+    private static final String ORE_screwAluminium = "screwAluminium";
     private static final String ORE_screwSteel = "screwSteel";
     private static final String ORE_slabWood = "slabWood";
     private static final String ORE_stickDiamond = "stickDiamond";
@@ -84,9 +86,11 @@ public class ModRecipes {
     private static final ItemStack comparatorGate = makeItemStack("ProjRed|Integration:projectred.integration.gate", 26, 1, null);
 
     // Ingredients for Upgrades recipes
+    private static final ItemStack trashCan = makeItemStack("ExtraUtilities:trashcan", 0, 1, null);
     private static final ItemStack redAlloyWire = makeItemStack("ProjRed|Transmission:projectred.transmission.wire", 0, 1, null);
     private static final ItemStack upgradeLock = new ItemStack(ModItems.upgradeLock);
     private static final ItemStack piston = new ItemStack(Blocks.piston, 1);
+    private static final ItemStack diamond = new ItemStack(Items.diamond, 1);
     private static final ItemStack upgradeTemplate = new ItemStack(ModItems.upgradeTemplate);
     private static final ImmutableList<ItemStack> drawerBasicW;
 
@@ -358,11 +362,12 @@ public class ModRecipes {
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.controller),
                 new String[]{
                         "scs",
-                        "gbg",
+                        "ObR",
                         "odo"},
-                's', ORE_plateStainlessSteel,
+                's', ORE_plateBirmabright,
                 'c', ORE_circuitGood,
-                'g', comparatorGate,
+                'O', ItemList.Conveyor_Module_MV,
+                'R', ItemList.Robot_Arm_MV,
                 'b', ORE_drawerBasic,
                 'o', ORE_plateObsidian,
                 'd', ORE_plateDiamond));
@@ -370,13 +375,12 @@ public class ModRecipes {
 
     private static void controllerSlaveRecipes() {
         if (!config.isBlockEnabled("controllerSlave")) return;
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.controllerSlave), "scs", "gbg", "oeo",
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModBlocks.controllerSlave), "scs", "gbg", "ooo",
                 's', ORE_plateStainlessSteel,
                 'c', ORE_circuitGood,
                 'g', comparatorGate,
                 'b', ORE_drawerBasic,
-                'o', ORE_plateObsidian,
-                'e', ORE_plateEnderEye));
+                'o', ORE_plateObsidian));
     }
 
     private static void framingTableRecipes() {
@@ -518,10 +522,11 @@ public class ModRecipes {
         if (!config.cache.enableVoidUpgrades) return;
 
         // Upgrade Void recipe
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.upgradeVoid), "sws", "ouo", "sws",
-                's', ORE_stickWood,
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(ModItems.upgradeVoid), "sus", "oto", "sws",
+                's', ORE_screwAluminium,
                 'w', redAlloyWire,
-                'o', ORE_plateDenseObsidian,
+                't', trashCan,
+                'o', ORE_itemCasingAluminium,
                 'u', upgradeTemplate));
     }
 
@@ -542,7 +547,7 @@ public class ModRecipes {
         if (!config.cache.enableShroudUpgrades) return;
 
         // Concealment Key
-        RA.addAssemblerRecipe(new ItemStack[]{upgradeLock, new ItemStack(Items.ender_eye)}, NF, new ItemStack(ModItems.shroudKey), 100, 30);
+        RA.addAssemblerRecipe(new ItemStack[]{upgradeLock, diamond}, NF, new ItemStack(ModItems.shroudKey), 100, 30);
     }
 
     private static void personalKeyUpgradeRecipes() {

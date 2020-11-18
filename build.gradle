@@ -24,7 +24,7 @@ apply plugin: 'forge'
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-version = "1.7.10-1.11.5-gtnh"
+version = "1.7.10-1.11.5-impact"
 group= "com.jaquadro.minecraft.storagedrawers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "StorageDrawers"
 
@@ -78,10 +78,6 @@ repositories {
     ivy {
         name "MineTweaker3"
         artifactPattern "http://minetweaker3.powerofbytes.com/download/[module]-[revision].[ext]"
-    }
-    ivy {
-        name 'gtnh_download_source'
-        artifactPattern "http://downloads.gtnewhorizons.com/Mods_for_Jenkins/[module]-[revision].[ext]"
     }
 }
 

@@ -78,7 +78,7 @@ public class ConfigManager
         public boolean enableThermalExpansionIntegration;
         public boolean enableThermalFoundationIntegration;
         public boolean enableChiselIntegration;
-        public boolean enableGTNHIntegration;
+        public boolean enableIMPACTIntegration;
         public boolean enableTape;
         public boolean enableFallbackRecipes;
         public boolean enableFramedDrawers;
@@ -169,8 +169,8 @@ public class ConfigManager
         }
 
         @Override
-        public boolean isGTNHEnabled () {
-            return cache.enableGTNHIntegration;
+        public boolean isIMPACTEnabled () {
+            return cache.enableIMPACTIntegration;
         }
 
     }
@@ -275,7 +275,7 @@ public class ConfigManager
         cache.enableThermalExpansionIntegration = config.get(sectionIntegration.getQualifiedName(), "enableThermalExpansion", true).setLanguageKey(LANG_PREFIX + "integration.enableThermalExpansion").setRequiresMcRestart(true).getBoolean();
         cache.enableThermalFoundationIntegration = config.get(sectionIntegration.getQualifiedName(), "enableThermalFoundation", true).setLanguageKey(LANG_PREFIX + "integration.enableThermalFoundation").setRequiresMcRestart(true).getBoolean();
         cache.enableChiselIntegration = config.get(sectionIntegration.getQualifiedName(), "enableChisel", true).setLanguageKey(LANG_PREFIX + "integration.enableChisel").setRequiresMcRestart(true).getBoolean();
-        cache.enableGTNHIntegration = config.get(sectionIntegration.getQualifiedName(), "enableGTNH", true).setLanguageKey(LANG_PREFIX + "integration.enableGTNH").setRequiresMcRestart(true).getBoolean();
+        cache.enableIMPACTIntegration = config.get(sectionIntegration.getQualifiedName(), "enableIMPACT", true).setLanguageKey(LANG_PREFIX + "integration.enableIMPACT").setRequiresMcRestart(true).getBoolean();
 
         config.get(sectionBlocksFullDrawers1x1.getQualifiedName(), "enabled", true).setLanguageKey(LANG_PREFIX + "prop.enabled").setRequiresMcRestart(true);
         config.get(sectionBlocksFullDrawers1x1.getQualifiedName(), "baseStorage", 32).setLanguageKey(LANG_PREFIX + "prop.baseStorage").setRequiresWorldRestart(true);

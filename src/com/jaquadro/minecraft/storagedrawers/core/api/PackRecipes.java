@@ -53,7 +53,7 @@ public class PackRecipes {
                         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(basicFull1, blockConfig.getBlockRecipeOutput(nameFull1), i), "xxx", " y ", "xxx",
                                 'x', new ItemStack(plank, 1, plankMeta), 'y', "chestWood"));
                     if (slab != null) {
-                        if (StorageDrawers.config.cache.enableGTNHIntegration) {
+                        if (StorageDrawers.config.cache.enableIMPACTIntegration) {
                             GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(basicFull1, blockConfig.getBlockRecipeOutput(nameFull1), i),
                                     new String[]{
                                             "xxx",

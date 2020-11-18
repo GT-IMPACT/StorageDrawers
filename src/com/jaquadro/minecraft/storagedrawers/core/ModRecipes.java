@@ -3,7 +3,7 @@ package com.jaquadro.minecraft.storagedrawers.core;
 import com.jaquadro.minecraft.storagedrawers.core.recipe.FallbackShapedOreRecipe;
 import com.jaquadro.minecraft.storagedrawers.core.recipe.TemplateRecipe;
 import com.jaquadro.minecraft.storagedrawers.integration.ChiselIntegrationModule;
-import com.jaquadro.minecraft.storagedrawers.integration.GTNHIntegrationModule;
+import com.jaquadro.minecraft.storagedrawers.integration.IMPACTIntegrationModule;
 import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.BlockWood;
 import net.minecraft.init.Blocks;
@@ -21,7 +21,7 @@ public class ModRecipes {
     public void init() {
         OreDictionary.registerOre("chestWood", new ItemStack(Blocks.chest)); // Remove when porting to 1.8
 
-        if (GTNHIntegrationModule.isEnabled()) return;
+        if (IMPACTIntegrationModule.isEnabled()) return;
         RecipeSorter.register("StorageDrawers:FallbackShapedOreRecipe", FallbackShapedOreRecipe.class, RecipeSorter.Category.SHAPED, "after:forge:shapedore");
         if (!ChiselIntegrationModule.isEnabled()) {
             for (int i = 0; i < BlockWood.field_150096_a.length; i++) {
